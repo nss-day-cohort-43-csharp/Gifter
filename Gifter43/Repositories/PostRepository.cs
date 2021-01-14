@@ -29,6 +29,7 @@ namespace Gifter43.Repositories
         {
             return _context.Post
                 .Where(p => p.UserProfileId == id)
+                .Include(p => p.UserProfile)
                 .OrderBy(p => p.Title)
                 .ToList();
         }
@@ -64,7 +65,8 @@ namespace Gifter43.Repositories
         public List<Post> Search(string searchTerm, bool oldestFirst)
         {
             var query = _context.Post
-                .Where(p => p.Title.Contains(searchTerm));
+                .Where(p => p.Title.Contains(searchTerm))
+                .Include(p => p.UserProfile);
  
             if (oldestFirst == true)
             {
