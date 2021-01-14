@@ -20,5 +20,6 @@ namespace Gifter43.Models
         public DateTime DateCreated { get; set; }
         public List<Post> Posts { get; set; }
         public List<Comment> Comments { get; set; }
+        public string FirebaseId { get; set; }
     }
 }
